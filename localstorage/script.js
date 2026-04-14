@@ -1,9 +1,7 @@
-// simpan ke lokal storage
-localStorage.setItem("nama belanja",abc);
 
-// baca data local storage
-// tampilkan di console
-console.log(localStorage.getItem("nama belanja"))
+localStorage.setItem("nama barang",abc);
 
-// tampilkan di paragraf id=npm 
-document.getElementById("nama belanja").innerHTML=localStorage.getItem("nama belanja");
+
+console.log(localStorage.getItem("nama barang"))
+
+document.getElementById("nama barang").innerHTML=localStorage.getItem("nama barang");

@@ -1,44 +1,40 @@
-let npm = document.getElementById("npm");
-let nama = document.getElementById("nama");
-let imageurl = document.getElementById("imageurl");
+let namabarang = document.getElementById("nama belanja");
+let jumlah = document.getElementById("jumlah");
+let keterangan = document.getElementById("keterangan");
+let imageUrl = document.getElementById("imageUrl");
 
 function simpan() {
-    console.log(npm.value);
-    console.log(nama.value);
-    console.log(imageurl.value);
+    console.log(namabarang.value);
+    console.log(jumlah.value);
+    console.log(keterangan.value);
+    console.log(imageUrl.value);
 
-    // localStorage.setItem("npm", npm.value)
-    // localStorage.setItem("nama", nama.value)
-
-    // cek apakah local storage belum ada isi/value
-    if (localStorage.getItem("mahasiswa") == null) {
+   
+    if (localStorage.getItem("buah") == null) {
         // simpan array kosong []
-        localStorage.setItem("mahasiswa", "[]")
+        localStorage.setItem("buah", "[]")
     }
-
-
-    // panggil local stogare (konversi string => object)
-    let data = JSON.parse(localStorage.getItem("mahasiswa"))
+     let data = JSON.parse(localStorage.getItem("buah"))
     console.log(data)
 
-    // simpan value npm dan nama ke dalam object data
+    
     data.push({
-        npm: npm.value,
-        nama: nama.value,
-        imageurl: imageurl.value
+        namabarang: namabarang.value,
+        jumlah: jumlah.value,
+        keterangan: keterangan.value,
+        imageUrl: imageUrl.value
+
     });
     console.log(data)
 
-    //simpan data terbaru ke dalam localstorage
-    //konversi dari object menjadi string
-    localStorage.setItem("mahasiswa", JSON.stringify(data))
 
-    //pangill tampil
+    localStorage.setItem("buah", JSON.stringify(data))
+
     tampil()
 }
 function tampil(){
-    //panggil dulu local storage
-    let hasil = JSON.parse(localStorage.getItem("mahasiswa"))
+  
+    let hasil = JSON.parse(localStorage.getItem("buah"))
 
     //clear element ul id=list=mhs
     document.getElementById("list-mhs").innerHTML=""
@@ -48,10 +44,10 @@ function tampil(){
         let imgTag = element.imageurl ? `<img src="${element.imageurl}" alt="gambar belanja" 
         style="width:50px; height:auto;" onerror="this.style.display='none';">` : '';  
         document.getElementById("list-mhs").
-        innerHTML += `<div class="col-lg-4 col-md-6"><h4 class="text-primary">${element.nama}</h4> <h6 class="text-danger">${element.npm}</h6></div>
+        innerHTML += `<div class="col-lg-4 col-md-6"><h4 class="text-primary">${element.nama barang}</h4> <h6 class="text-danger">${element.jumlah}</h6></div>
          <img src="${element.imageurl}" alt="test">`
     });
 }
 
-//jalankan function tampil()
+
 tampil()
